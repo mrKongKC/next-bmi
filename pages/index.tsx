@@ -34,12 +34,6 @@ export default function Index() {
   const verifyNumberIsNotEmpty = (val: number) =>
     val !== null && val !== undefined && !isNaN(val) && val > 0;
 
-  const listItems = genderList.map((gender) => (
-    <option key={gender.value} value={gender.value}>
-      {gender.text}
-    </option>
-  ));
-
   useEffect(() => {
     verifyNumberIsNotEmpty(inputHeight) && verifyNumberIsNotEmpty(inputWeight)
       ? setVerifyInput("main-btn")
@@ -53,7 +47,11 @@ export default function Index() {
         onChange={handleMaleChange}
         className="select-container"
       >
-        {listItems}
+        {genderList.map((gender) => (
+          <option key={gender.value} value={gender.value}>
+            {gender.text}
+          </option>
+        ))}
       </select>
       <Input
         title="Weight (KG)"
