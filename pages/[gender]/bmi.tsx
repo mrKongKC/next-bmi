@@ -35,7 +35,7 @@ export default function BMI() {
         </Box>
 
         <Chip
-          label="Check BMI Result Detail"
+          label="Check BMI Result"
           color="primary"
           onClick={handleClick}
         />
