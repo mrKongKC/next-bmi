@@ -10,71 +10,9 @@ body {
   overflow-x: hidden;
 }
 
-.main-layout-container {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
+.primary-color{
+  color: #1976d2;
 }
 
 
-.main-layout-container__content {
-  width: 50%;
-}
 
-.content-container,.bmi-container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.select-container {
-  padding: 8px 0;
-}
-
-.font-bold{
-  font-weight: 700;
-}
-
-.gender-title {
-  font-size: 16px;
-}
-
-.bmi-result-detail{
-  text-decoration: underline;
-  color: #000000;
-}
-
-.bmi-result-detail:hover{
-  text-decoration: underline;
-  color: #6d6c6c;
-}
-
-.main-btn,
-.disabled-btn {
-  padding: 8px 12px;
-  color: #ffffff;
-  font-size: 18px;
-  background: #000000;
-  border: 1px solid #000000;
-  cursor: pointer;
-  border-radius: 8px;
-}
-
-.disabled-btn {
-  background: #7d7474;
-  border: 1px solid #7d7474;
-  cursor: not-allowed;
-}
-
-.main-btn:hover {
-  background: #000000b2;
-  transition: all 0.2s ease-in;
-}
-
-
-.mb-18 {
-  margin-bottom: 18px;
-}

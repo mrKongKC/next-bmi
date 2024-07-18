@@ -1,10 +1,15 @@
 import Input from "@/components/input";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import Box from "@mui/material/Box";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Stack from "@mui/material/Stack";
 
 export default function Index() {
   const router = useRouter();
-  const [verifyInput, setVerifyInput] = useState<string>("main-btn");
+  const [verifyInput, setVerifyInput] = useState<string>("disabled-btn");
   const [inputHeight, setInputHeightValue] = useState<number>(0);
   const [inputWeight, setInputWeightValue] = useState<number>(0);
   const [gender, setGenderValue] = useState<string>("male");
@@ -14,7 +19,7 @@ export default function Index() {
     { value: "female", text: "Female" },
   ];
 
-  const handleMaleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleMaleChange = (e: SelectChangeEvent) => {
     setGenderValue(e.target.value);
   };
 
@@ -41,39 +46,39 @@ export default function Index() {
   }, [inputHeight, inputWeight]);
 
   return (
-    <div className="content-container">
-      <select
-        value={gender}
-        onChange={handleMaleChange}
-        className="select-container"
-      >
-        {genderList.map((gender) => (
-          <option key={gender.value} value={gender.value}>
-            {gender.text}
-          </option>
-        ))}
-      </select>
-      <Input
-        title="Weight (KG)"
-        placeHolder="Enter Weight"
-        type="number"
-        require
-        onChange={handleInputWeightChange}
-      ></Input>
-      <Input
-        title="Height (CM)"
-        placeHolder="Enter height"
-        type="number"
-        require
-        onChange={handleInputHeightChange}
-      ></Input>
-      <button
-        className={verifyInput}
-        disabled={"disabled-btn" === verifyInput}
-        onClick={changePage}
-      >
-        Calculate
-      </button>
-    </div>
+    <Box sx={{ width: "50%" }}>
+      <Stack spacing={3}>
+        <Select value={gender} onChange={handleMaleChange}>
+          {genderList.map((gender) => (
+            <MenuItem key={gender.value} value={gender.value}>
+              {gender.text}
+            </MenuItem>
+          ))}
+        </Select>
+        <Input
+          title="Weight (KG)"
+          placeHolder="Enter Weight"
+          type="number"
+          require
+          onChange={handleInputWeightChange}
+        ></Input>
+        <Input
+          title="Height (CM)"
+          placeHolder="Enter height"
+          type="number"
+          require
+          onChange={handleInputHeightChange}
+        ></Input>
+
+        <Button
+          size="large"
+          variant="contained"
+          disabled={"disabled-btn" === verifyInput}
+          onClick={changePage}
+        >
+          Calculate
+        </Button>
+      </Stack>
+    </Box>
   );
 }
