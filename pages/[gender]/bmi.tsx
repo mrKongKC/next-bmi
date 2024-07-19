@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import MaleRoundedIcon from "@mui/icons-material/MaleSharp";
 import FemaleRoundedIcon from "@mui/icons-material/FemaleSharp";
+import { Grid } from "@mui/material";
 
 export default function BMI() {
   const router = useRouter();
@@ -17,8 +18,8 @@ export default function BMI() {
   const parsedResult =
     typeof result === "string" ? parseFloat(result).toFixed(2) : "-";
   return (
-    <Box sx={{ width: "50%" }}>
-      <Stack spacing={3} alignItems="center">
+    <Grid maxWidth="md" container justifyContent="center" p={2}>
+      <Stack spacing={3} sx={{ width: "100%" }}>
         <Box display="flex" gap={1} alignItems="center">
           <h3>Result: {parsedResult}</h3>
           {gender === "male" ||
@@ -34,12 +35,8 @@ export default function BMI() {
           )}
         </Box>
 
-        <Chip
-          label="Check BMI Result"
-          color="primary"
-          onClick={handleClick}
-        />
+        <Chip label="Check BMI Result" color="primary" onClick={handleClick} />
       </Stack>
-    </Box>
+    </Grid>
   );
 }

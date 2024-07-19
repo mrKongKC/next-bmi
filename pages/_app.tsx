@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import type { AppProps } from "next/app";
@@ -14,7 +15,9 @@ export default function App({ Component, pageProps }: AppProps) {
         gap={3}
         sx={{ height: "80dvh", border: "2px solid #1976d2" }}
       >
-        <h1 className="mb-18 primary-color">Calculate BMI</h1>
+        <Typography variant="h2" component="h1" color="primary">
+          Calculate BMI
+        </Typography>
         <Component {...pageProps} />
       </Box>
     </Container>

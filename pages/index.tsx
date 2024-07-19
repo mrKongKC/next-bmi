@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import Box from "@mui/material/Box";
+import { Grid } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Stack from "@mui/material/Stack";
 
@@ -46,8 +46,8 @@ export default function Index() {
   }, [inputHeight, inputWeight]);
 
   return (
-    <Box sx={{ width: "50%" }}>
-      <Stack spacing={3}>
+    <Grid maxWidth="md" container justifyContent="center" p={2}>
+      <Stack spacing={3} sx={{ width: "100%" }}>
         <Select value={gender} onChange={handleMaleChange}>
           {genderList.map((gender) => (
             <MenuItem key={gender.value} value={gender.value}>
@@ -60,6 +60,7 @@ export default function Index() {
           placeHolder="Enter Weight"
           type="number"
           require
+          focused
           onChange={handleInputWeightChange}
         ></Input>
         <Input
@@ -79,6 +80,6 @@ export default function Index() {
           Calculate
         </Button>
       </Stack>
-    </Box>
+    </Grid>
   );
 }

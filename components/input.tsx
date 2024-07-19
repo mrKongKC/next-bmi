@@ -1,18 +1,28 @@
 import React from "react";
 import styles from "@/styles/Input.module.css"; // Import CSS module
 import TextField from "@mui/material/TextField";
+import { useState } from "react";
 
 interface PropsInput {
   title?: string;
   placeHolder?: string;
   type?: string;
   require?: boolean;
-  focused?:boolean
+  focused?: boolean;
+  autoFocus?: boolean;
   onChange: (value: string) => void; //declare function that same like emit in vue to return value to parent
 }
 
 export default function Input(props: PropsInput) {
-  const { title, placeHolder, onChange, type, require,focused } = props;
+  const {
+    title,
+    placeHolder,
+    onChange,
+    type,
+    require,
+    focused: defaultFocused,
+  } = props;
+  const [focused, setFocused] = useState<boolean>(defaultFocused ?? false);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     onChange(newValue); //update to parent
@@ -34,7 +44,13 @@ export default function Input(props: PropsInput) {
         className={styles.inputField}
         fullWidth
         onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
+        onKeyUp={handleKeyPress}
+        onBlur={() => {
+          setFocused(false);
+        }}
+        onFocus={() => {
+          setFocused(true);
+        }}
         label={
           !require ? (
             <label>{title}</label>
